@@ -1,0 +1,12 @@
+--- security/security.c
++++ security/security.c
+@@ -455,6 +473,9 @@
+ 		return 0;
+ 	return security_ops->path_truncate(path, length, time_attrs);
+ }
++#ifdef CONFIG_AUFS_FS_MODULE
++EXPORT_SYMBOL(security_path_truncate);
++#endif
+ #endif
+ 
+ int security_inode_create(struct inode *dir, struct dentry *dentry, int mode)
